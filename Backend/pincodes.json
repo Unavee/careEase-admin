@@ -1,0 +1,15 @@
+{
+    "Delhi_Central Delhi": ["110001", "110002", "110003"],
+    "Delhi_East Delhi": ["110091", "110092", "110093"],
+    "Delhi_North Delhi": ["110054", "110055", "110056"],
+    "Delhi_North East Delhi": ["110094", "110095", "110096"],
+    "Delhi_North West Delhi": ["110039", "110040", "110041"],
+    "Delhi_South Delhi": ["110017", "110018", "110019"],
+    "Delhi_South West Delhi": ["110075", "110076", "110077"],
+    "Delhi_West Delhi": ["110015", "110016", "110018"],
+    "Uttar Pradesh_Noida": ["201301", "201302", "201303"],
+    "Uttar Pradesh_Greater Noida": ["201308", "201309", "201310"],
+    "Uttar Pradesh_Ghaziabad": ["201001", "201002", "201003"],
+    "Haryana_Gurgaon": ["122001", "122002", "122003"]
+  }
+  

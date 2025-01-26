@@ -1,0 +1,65 @@
+ [
+    {
+      "_id": "63e8cfa7a1b8e4567890123B",
+      "category": "elderly_care",
+      "title": "Elderly Care",
+      "description": "Assistance with daily activities, health monitoring, and companionship.",
+      "icon": "<FaUserNurse size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123C",
+      "category": "mother_care",
+      "title": "Mother Care",
+      "description": "Support for mothers through pregnancy and postnatal recovery, ensuring well-being for both.",
+      "icon": "<FaBaby size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123D",
+      "category": "child_care",
+      "title": "Child Care",
+      "description": "Specialized pediatric care and support for families.",
+      "icon": "<FaChild size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123E",
+      "category": "post_accident_care",
+      "title": "Post-Accident Care",
+      "description": "Recovery support and rehabilitation for accident victims.",
+      "icon": "<FaAmbulance size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123F",
+      "category": "post_surgery_care",
+      "title": "Post-Surgery Care",
+      "description": "Wound care, medication management, and recovery support.",
+      "icon": "<FaCut size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123G",
+      "category": "physiotherapy",
+      "title": "Physiotherapy",
+      "description": "In-home rehabilitation and mobility assistance.",
+      "icon": "<FaDumbbell size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123H",
+      "category": "home_medical_services",
+      "title": "Home Medical Services",
+      "description": "Basic medical treatments, health check-ups, and monitoring.",
+      "icon": "<FaHospital size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123I",
+      "category": "special_needs_care",
+      "title": "Special Needs Care",
+      "description": "Personalized care for individuals with disabilities or chronic conditions.",
+      "icon": "<FaWheelchair size={48} />"
+    },
+    {
+      "_id": "63e8cfa7a1b8e4567890123J",
+      "category": "intensive_care_at_home",
+      "title": "Intensive Care at Home",
+      "description": "Advanced, critical care services provided by skilled nurses.",
+      "icon": "<FaHeartbeat size={48} />"
+    }
+  ]
