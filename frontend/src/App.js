@@ -92,7 +92,9 @@ const App = () => {
               <UserDashboard /> {/* No need to pass user details here */}
             </ProtectedRoute>
           }
+          
         />
+       
       </Routes>
       <Footer />
     </Router>

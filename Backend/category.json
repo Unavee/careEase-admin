@@ -30,7 +30,7 @@
     {
       "_id": "63e8cfa7a1b8e4567890123F",
       "category": "post_surgery_care",
-      "title": "Post-Surgery Care",
+      "title": "Post-Accident Care",
       "description": "Wound care, medication management, and recovery support.",
       "icon": "<FaCut size={48} />"
     },

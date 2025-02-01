@@ -20,6 +20,12 @@ const db = admin.database();  // Realtime Database
 const firestore = admin.firestore(); // Firestore
 const auth = admin.auth();
 
+const corsOptions = {
+  origin: ['http://localhost:3000'],  // Frontend URL
+  methods: ['GET', 'POST', 'OPTIONS'],
+  maxAge: 3600, // Cache CORS preflight response for 1 hour
+};
+
 // Middleware
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
@@ -238,7 +244,7 @@ app.put("/api/user/:uid", async (req, res) => {
 });
 
 // Get user profile by UID (using Firestore)
-app.get('/api/user/:userId', async (req, res) => {
+app.get('/api/user/:uid', async (req, res) => {
   const { userId } = req.params;
 
   try {
@@ -270,6 +276,31 @@ app.get("/api/forms/:uid", async (req, res) => {
     res.status(200).json({ forms });
   } catch (err) {
     res.status(500).json({ message: "Error fetching forms", error: err.message });
+  }
+});
+
+
+// Get user data based on userId
+app.get("/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const userCollection = collection(db, "users");
+    const q = query(userCollection, where("userId", "==", userId));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    let userData = {};
+    snapshot.forEach((doc) => {
+      userData = { id: doc.id, ...doc.data() };
+    });
+
+    res.json(userData);
+  } catch (error) {
+    console.error("Error retrieving user data:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
