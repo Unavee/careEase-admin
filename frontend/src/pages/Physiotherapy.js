@@ -32,18 +32,34 @@ const CareProviderApplicationForm = () => {
               gender: "",
               contactNumber: "",
               email: "",
+              currentAddress: "",
+              firstLanguage: "",
+              secondLanguage: "",
               licenseNumber: "",
               issuingAuthority: "",
               physiotherapyLicense: null,
               highestDegree: "",
+              institutionName: "",
+              yearOfGraduation: "",
               educationProof: null,
-              certifications: [],
+              specialization: "",
+              specializationProof: null,
+              yearsOfExperience: "",
+              resume: null,
+              currentEmployment: "",
+              workplaceDetails: "",
+              idProof: null,
               criminalBackgroundCheck: null,
               medicalFitnessCert: null,
-              resume: null,
-              aboutMe: "",
+              recentPhotograph: null,
+              liabilityInsurance: null,
+              pastDisciplinaryActions: "",
+              noc: null,
+              residentialAddressProof: null,
+              travelPreferences: "",
               signature: null,
               declaration: false,
+              aboutMe: "",
             }}
             onSubmit={(values) => {
               console.log(values);
@@ -110,6 +126,38 @@ const CareProviderApplicationForm = () => {
                     />
                     <ErrorMessage name="email" component="div" className="text-red-600 text-sm" />
                   </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Current Address *</label>
+                    <Field
+                      type="text"
+                      name="currentAddress"
+                      placeholder="State, District, City"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                    <ErrorMessage name="currentAddress" component="div" className="text-red-600 text-sm" />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">1st Language *</label>
+                    <Field
+                      type="text"
+                      name="firstLanguage"
+                      placeholder="1st Language"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                    <ErrorMessage name="firstLanguage" component="div" className="text-red-600 text-sm" />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">2nd Language</label>
+                    <Field
+                      type="text"
+                      name="secondLanguage"
+                      placeholder="2nd Language"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
                 </div>
 
                 {/* Professional Details */}
@@ -137,6 +185,79 @@ const CareProviderApplicationForm = () => {
                     />
                     <ErrorMessage name="issuingAuthority" component="div" className="text-red-600 text-sm" />
                   </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Highest Degree *</label>
+                    <Field
+                      type="text"
+                      name="highestDegree"
+                      placeholder="Highest Degree"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Institution Name *</label>
+                    <Field
+                      type="text"
+                      name="institutionName"
+                      placeholder="Institution Name"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Year of Graduation *</label>
+                    <Field
+                      type="number"
+                      name="yearOfGraduation"
+                      placeholder="Year of Graduation"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Specialization</label>
+                    <Field
+                      type="text"
+                      name="specialization"
+                      placeholder="Specialization (if any)"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Total Years of Experience *</label>
+                    <Field
+                      type="number"
+                      name="yearsOfExperience"
+                      placeholder="Years of Experience"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Are you currently employed? *</label>
+                    <Field
+                      as="select"
+                      name="currentEmployment"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    >
+                      <option value="">Select</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </Field>
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Workplace Details</label>
+                    <Field
+                      type="text"
+                      name="workplaceDetails"
+                      placeholder="If Yes, specify workplace details"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
                 </div>
 
                 {/* File Uploads */}
@@ -161,44 +282,104 @@ const CareProviderApplicationForm = () => {
                       className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
                     />
                   </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Specialization Proof (if applicable)</label>
+                    <input
+                      name="specializationProof"
+                      type="file"
+                      onChange={(event) => setFieldValue("specializationProof", event.currentTarget.files[0])}
+                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Resume *</label>
+                    <input
+                      name="resume"
+                      type="file"
+                      onChange={(event) => setFieldValue("resume", event.currentTarget.files[0])}
+                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
                 </div>
 
-                {/* Certifications */}
-                <h3 className="text-lg font-semibold mt-6">Certifications</h3>
-                <div>
-                  <label className="block text-gray-700 font-medium">Select Certifications *</label>
-                  <Field
-                    as="select"
-                    name="certifications"
-                    multiple
-                    className="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
-                  >
-                    <option value="CPR">CPR Certification</option>
-                    <option value="First Aid">First Aid</option>
-                    <option value="Advanced Physiotherapy">Advanced Physiotherapy</option>
-                  </Field>
+                {/* Supporting Documents */}
+                <h3 className="text-lg font-semibold mt-6">Supporting Documents</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-gray-700 font-medium">Criminal Background Check *</label>
+                    <input
+                      name="criminalBackgroundCheck"
+                      type="file"
+                      onChange={(event) => setFieldValue("criminalBackgroundCheck", event.currentTarget.files[0])}
+                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Medical Fitness Certificate *</label>
+                    <input
+                      name="medicalFitnessCert"
+                      type="file"
+                      onChange={(event) => setFieldValue("medicalFitnessCert", event.currentTarget.files[0])}
+                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Liability Insurance *</label>
+                    <input
+                      name="liabilityInsurance"
+                      type="file"
+                      onChange={(event) => setFieldValue("liabilityInsurance", event.currentTarget.files[0])}
+                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 font-medium">Residential Address Proof *</label>
+                    <input
+                      name="residentialAddressProof"
+                      type="file"
+                      onChange={(event) => setFieldValue("residentialAddressProof", event.currentTarget.files[0])}
+                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                    />
+                  </div>
                 </div>
 
-                {/* Additional Details */}
-                <h3 className="text-lg font-semibold mt-6">Additional Information</h3>
+                {/* Signature */}
                 <div>
-                  <label className="block text-gray-700 font-medium">About Me *</label>
-                  <Field
-                    as="textarea"
-                    name="aboutMe"
-                    placeholder="Write a brief description about yourself."
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  <label className="block text-gray-700 font-medium">Signature *</label>
+                  <input
+                    name="signature"
+                    type="file"
+                    onChange={(event) => setFieldValue("signature", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
                   />
-                  <ErrorMessage name="aboutMe" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Declaration */}
+                <div className="flex items-center space-x-2">
+                  <Field
+                    type="checkbox"
+                    name="declaration"
+                    className="w-5 h-5 text-primary-blue border-gray-300 rounded focus:ring-primary-blue focus:outline-none"
+                  />
+                  <label className="text-gray-700 font-medium">
+                    I declare that the information provided is true to the best of my knowledge.
+                  </label>
                 </div>
 
                 {/* Submit */}
-                <button
-                  type="submit"
-                  className="w-full bg-primary-blue text-white py-3 px-6 rounded-lg font-medium hover:bg-primary-dark transition"
-                >
-                  Submit Application
-                </button>
+                <div className="mt-6 text-center">
+                  <button
+                    type="submit"
+                    className="px-8 py-3 bg-primary-blue text-white rounded-lg focus:outline-none hover:bg-primary-blue-dark"
+                  >
+                    Submit Application
+                  </button>
+                </div>
               </Form>
             )}
           </Formik>
@@ -209,4 +390,3 @@ const CareProviderApplicationForm = () => {
 };
 
 export default CareProviderApplicationForm;
-        

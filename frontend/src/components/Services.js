@@ -24,7 +24,7 @@ export default function Services() {
 
   const handleFutureDevelopment = (topic) => {
     if (topic === "findCaregiver") {
-      navigate("/bookingPage");
+      navigate("/userdashboard");
     } else {
       navigate("/providecare");
     }

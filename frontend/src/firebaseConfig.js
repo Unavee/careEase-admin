@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { getStorage } from 'firebase/storage'; // Import the modular Firebase Storage SDK
 
 // Your Firebase configuration object
 const firebaseConfig = {
@@ -18,9 +19,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firestore and Authentication
+// Initialize Firestore, Storage, and Authentication
 const db = getFirestore(app);
+const storage = getStorage(app); // Initialize Firebase Storage
 const auth = getAuth(app);  // Initialize Firebase Authentication
 
 // Export necessary Firebase and Firestore functions
-export { app, db, auth, collection, addDoc, doc, getDoc, onAuthStateChanged, signInWithEmailAndPassword };
+export { app, db, auth, storage, collection, addDoc, doc, getDoc, onAuthStateChanged, signInWithEmailAndPassword };

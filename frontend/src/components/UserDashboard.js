@@ -4,6 +4,7 @@ import UserSidebar from "./userSidebar";
 import UserHome from "./UserHome";
 import UserProfile from "./UserProfile";
 import CaregiverHistory from "./CaregiverHistory";
+import FindCare from "./FindCare";
 
 const UserDashboard = () => {
   const userId = localStorage.getItem('userId');
@@ -58,12 +59,17 @@ const UserDashboard = () => {
             path="/profile"
             element={<UserProfile />}
           />
+           <Route
+            path="/findcare"
+            element={<FindCare/>}
+          />
 
           {/* Caregiver History Route */}
           <Route
             path="/history"
             element={<CaregiverHistory history={caregiverHistory} />}
           />
+          
         </Routes>
       </div>
     </div>

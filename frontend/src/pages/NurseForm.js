@@ -30,6 +30,7 @@ const NurseForm = () => {
       alert("Failed to submit the form. Please try again.");
     }
   };
+  
   return (
     <div className="min-h-screen flex items-center justify-center font-sans bg-gray-50 relative mt-24">
       {/* Background Video */}
@@ -232,70 +233,155 @@ const NurseForm = () => {
                     multiple
                     className="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
                   >
-                  <option value="Physiotherapist Nurse">Physiotherapist Nurse</option>
-<option value="Cardiovascular ICU Nurse">Cardiovascular ICU Nurse</option>
-<option value="Acute Care Nurse">Acute Care Nurse</option>
-<option value="Emergency Room Nurse">Emergency Room Nurse</option>
-<option value="Pediatric Nurse">Pediatric Nurse</option>
-<option value="Oncology Nurse">Oncology Nurse</option>
-<option value="Neonatal Nurse">Neonatal Nurse</option>
-<option value="Geriatric Nurse">Geriatric Nurse</option>
-<option value="Surgical Nurse">Surgical Nurse</option>
-<option value="Mental Health Nurse">Mental Health Nurse</option>
-<option value="Nurse Midwife">Nurse Midwife</option>
-<option value="Anesthesia Nurse">Anesthesia Nurse</option>
-<option value="Labor and Delivery Nurse">Labor and Delivery Nurse</option>
-<option value="Orthopedic Nurse">Orthopedic Nurse</option>
-<option value="Wound Care Nurse">Wound Care Nurse</option>
-<option value="Dialysis Nurse">Dialysis Nurse</option>
-<option value="ICU Nurse">ICU Nurse</option>
-<option value="Palliative Care Nurse">Palliative Care Nurse</option>
-<option value="Home Health Nurse">Home Health Nurse</option>
-<option value="Public Health Nurse">Public Health Nurse</option>
-<option value="Infection Control Nurse">Infection Control Nurse</option>
-<option value="Clinical Nurse Specialist">Clinical Nurse Specialist</option>
-<option value="Nurse Educator">Nurse Educator</option>
-<option value="Forensic Nurse">Forensic Nurse</option>
-<option value="Transplant Nurse">Transplant Nurse</option>
-<option value="Nephrology Nurse">Nephrology Nurse</option>
-<option value="Hematology Nurse">Hematology Nurse</option>
-<option value="Respiratory Nurse">Respiratory Nurse</option>
-
+                    <option value="Physiotherapist Nurse">Physiotherapist Nurse</option>
+                    <option value="Cardiovascular ICU Nurse">Cardiovascular ICU Nurse</option>
+                    <option value="Acute Care Nurse">Acute Care Nurse</option>
                   </Field>
                   <ErrorMessage name="specialties" component="div" className="text-red-600 text-sm" />
                 </div>
 
-                {/* Upload Specialization Certificates */}
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-gray-700 font-medium">Upload Certificate for Physiotherapist Nurse</label>
-                    <input
-                      name="physiotherapistCert"
-                      type="file"
-                      onChange={(event) => setFieldValue("physiotherapistCert", event.currentTarget.files[0])}
-                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
-                    />
-                  </div>
+                {/* Certifications */}
+                <h3 className="text-lg font-semibold mt-6">Certifications</h3>
 
-                  <div>
-                    <label className="block text-gray-700 font-medium">Upload Certificate for Cardiovascular ICU Nurse</label>
-                    <input
-                      name="cardiovascularIcuCert"
-                      type="file"
-                      onChange={(event) => setFieldValue("cardiovascularIcuCert", event.currentTarget.files[0])}
-                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Physiotherapist Certification</label>
+                  <input
+                    name="physiotherapistCert"
+                    type="file"
+                    onChange={(event) => setFieldValue("physiotherapistCert", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                </div>
 
-                  <div>
-                    <label className="block text-gray-700 font-medium">Upload Certificate for Acute Care Nurse</label>
-                    <input
-                      name="acuteCareCert"
-                      type="file"
-                      onChange={(event) => setFieldValue("acuteCareCert", event.currentTarget.files[0])}
-                      className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Cardiovascular ICU Certification</label>
+                  <input
+                    name="cardiovascularIcuCert"
+                    type="file"
+                    onChange={(event) => setFieldValue("cardiovascularIcuCert", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Acute Care Certification</label>
+                  <input
+                    name="acuteCareCert"
+                    type="file"
+                    onChange={(event) => setFieldValue("acuteCareCert", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                </div>
+
+                {/* Employment Status */}
+                <div className="mt-6">
+                  <label className="block text-gray-700 font-medium">Currently Employed?</label>
+                  <Field
+                    as="select"
+                    name="isEmployed"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Field>
+                  <ErrorMessage name="isEmployed" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Upload Resume */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Resume *</label>
+                  <input
+                    name="resume"
+                    type="file"
+                    onChange={(event) => setFieldValue("resume", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                  <ErrorMessage name="resume" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Identity Proof */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Identity Proof *</label>
+                  <input
+                    name="identityProof"
+                    type="file"
+                    onChange={(event) => setFieldValue("identityProof", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                  <ErrorMessage name="identityProof" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Criminal Background Check */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Criminal Background Check *</label>
+                  <input
+                    name="criminalBackgroundCheck"
+                    type="file"
+                    onChange={(event) => setFieldValue("criminalBackgroundCheck", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                  <ErrorMessage name="criminalBackgroundCheck" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Medical Fitness Certificate */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Medical Fitness Certificate *</label>
+                  <input
+                    name="medicalFitnessCert"
+                    type="file"
+                    onChange={(event) => setFieldValue("medicalFitnessCert", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                  <ErrorMessage name="medicalFitnessCert" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Recent Photograph */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Recent Photograph *</label>
+                  <input
+                    name="recentPhotograph"
+                    type="file"
+                    onChange={(event) => setFieldValue("recentPhotograph", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                  <ErrorMessage name="recentPhotograph" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Residential Address Proof */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Upload Residential Address Proof *</label>
+                  <input
+                    name="residentialAddressProof"
+                    type="file"
+                    onChange={(event) => setFieldValue("residentialAddressProof", event.currentTarget.files[0])}
+                    className="mt-2 block w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
+                  <ErrorMessage name="residentialAddressProof" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* Travel Preference */}
+                <div>
+                  <label className="block text-gray-700 font-medium">Travel Preference *</label>
+                  <Field
+                    as="select"
+                    name="travelPreference"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  >
+                    <option value="Willing to Travel">Willing to Travel</option>
+                    <option value="Not Willing to Travel">Not Willing to Travel</option>
+                  </Field>
+                  <ErrorMessage name="travelPreference" component="div" className="text-red-600 text-sm" />
+                </div>
+
+                {/* About Me */}
+                <div>
+                  <label className="block text-gray-700 font-medium">About Me</label>
+                  <Field
+                    as="textarea"
+                    name="aboutMe"
+                    placeholder="Tell us about yourself"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none"
+                  />
                 </div>
 
                 {/* Signature */}
@@ -311,26 +397,23 @@ const NurseForm = () => {
                 </div>
 
                 {/* Declaration */}
-                <div className="flex items-center">
+                <div className="mt-6">
                   <Field
                     type="checkbox"
                     name="declaration"
-                    className="mr-2 h-5 w-5 text-primary-blue border-gray-300 rounded focus:ring-primary-blue focus:outline-none"
+                    className="mr-2 leading-5"
                   />
-                  <label htmlFor="declaration" className="text-gray-700">
-                    I hereby declare that the information provided is true and correct.
-                  </label>
+                  <label className="inline-block text-gray-700 font-medium">I declare that all information is true and accurate.</label>
+                  <ErrorMessage name="declaration" component="div" className="text-red-600 text-sm" />
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-center mt-6">
-                  <button
-                    type="submit"
-                    className="px-6 py-3 bg-primary-blue text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-blue"
-                  >
-                    Submit
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="mt-6 w-full bg-blue-600 text-white p-3 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-primary-blue"
+                >
+                  Submit Form
+                </button>
               </Form>
             )}
           </Formik>
