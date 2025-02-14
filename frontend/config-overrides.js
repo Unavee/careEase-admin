@@ -14,5 +14,11 @@ module.exports = function override(config) {
     zlib: require.resolve('browserify-zlib'),  // Add this line for zlib
   };
 
+  // Add alias to resolve '@' to 'src'
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    '@': path.resolve(__dirname, 'src'),  // Ensure 'src' is the root for '@' alias
+  };
+
   return config;
 };

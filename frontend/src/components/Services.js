@@ -1,217 +1,124 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUserNurse, FaHandHoldingHeart, FaCalendarCheck, FaBaby, FaChild, FaAmbulance, FaCut, FaDumbbell, FaHospital, FaWheelchair, FaHeartbeat } from "react-icons/fa"; // Importing required icons
+"use client";
 
-export default function Services() {
-  const [activeTopic, setActiveTopic] = useState(null);
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaUserNurse, FaHandHoldingHeart } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+
+const Services = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupContent, setPopupContent] = useState("");
-  const [activePopupTopic, setActivePopupTopic] = useState(null);
-
   const navigate = useNavigate();
 
-  const handleLearnMore = (topic) => {
-    setActiveTopic(topic);
-    setPopupContent(content[topic].details);
-    setActivePopupTopic(topic);
+  const handleLearnMore = (content) => {
+    setPopupContent(content);
     setShowPopup(true);
   };
-
+  
   const handleClosePopup = () => {
     setShowPopup(false);
-    setActiveTopic(null);
+  };
+  
+  const handleNavigation = (path) => {
+    navigate(path);  // Use React Router's navigate instead of Next.js router.push
   };
 
-  const handleFutureDevelopment = (topic) => {
-    if (topic === "findCaregiver") {
-      navigate("/userdashboard");
-    } else {
-      navigate("/providecare");
-    }
-  };
-
-  const content = {
-    findCaregiver: {
+  const services = [
+    {
       title: "Find Caregiver",
-      icon: <FaUserNurse size={48} className="text-primary-blue" />,
-      brief: "Discover compassionate and skilled caregivers to ensure the well-being of your loved ones.",
+      description: "Discover skilled caregivers for your loved ones.",
+      icon: <FaUserNurse size={50} className="text-blue-500 drop-shadow-lg" />,
+      path: "/userdashboard",
       details:
-        "Finding the right caregiver is crucial to providing the care your loved ones deserve. At CareEase, we simplify the process by connecting you with trained professionals who are passionate about their work. Whether it's help with daily tasks, companionship, or specialized medical care, our network of caregivers is ready to meet your needs. Trust us to help you find personalized care solutions that ensure peace of mind for you and your family.",
+        "We connect you with trusted caregivers for personalized care and professional support tailored to individual needs.",
     },
-    provideCare: {
+    {
       title: "Provide Care",
-      icon: <FaHandHoldingHeart size={48} className="text-primary-blue" />,
-      brief: "Join our network of caregivers and make a meaningful difference in people's lives.",
+      description: "Join our network and help those in need.",
+      icon: <FaHandHoldingHeart size={50} className="text-green-500 drop-shadow-lg" />,
+      path: "/providecare",
       details:
-        "Becoming a caregiver with CareEase allows you to support individuals in need while advancing your career. At CareEase, we deeply value the contributions of caregivers who are not only skilled and experienced but also compassionate and dedicated to improving the quality of life for others. Our platform connects you with individuals and families who rely on your expertise to ensure that their loved ones receive the best in-home care possible. Whether you're experienced in providing daily assistance, medical care, or companionship, CareEase gives you the opportunity to make a significant and lasting impact on the lives of those you care for.",
-    },
-  };
-
-  const formatText = (text) => {
-    return text.split("\n").map((line, index) => (
-      <span key={index}>
-        {line}
-        <br />
-      </span>
-    ));
-  };
-
-  const additionalServices = [
-    {
-      title: "Elderly Care",
-      description: "Assistance with daily activities, health monitoring, and companionship.",
-      icon: <FaUserNurse size={48} />,
-      background: "#E3F2FD",
-      borderColor: "#90CAF9",
-    },
-    {
-      title: "Mother Care",
-      description: "Support for mothers through pregnancy and postnatal recovery, ensuring well-being for both.",
-      icon: <FaBaby size={48} />,
-      background: "#E8F5E9",
-      borderColor: "#A5D6A7",
-    },
-    {
-      title: "Child Care",
-      description: "Specialized pediatric care and support for families.",
-      icon: <FaChild size={48} />,
-      background: "#E3F2FD",
-      borderColor: "#90CAF9",
-    },
-    {
-      title: "Post-Accident Care",
-      description: "Recovery support and rehabilitation for accident victims.",
-      icon: <FaAmbulance size={48} />,
-      background: "#E8F5E9",
-      borderColor: "#A5D6A7",
-    },
-    {
-      title: "Post-Surgery Care",
-      description: "Wound care, medication management, and recovery support.",
-      icon: <FaCut size={48} />,
-      background: "#E3F2FD",
-      borderColor: "#90CAF9",
-    },
-    {
-      title: "Physiotherapy",
-      description: "In-home rehabilitation and mobility assistance.",
-      icon: <FaDumbbell size={48} />,
-      background: "#E8F5E9",
-      borderColor: "#A5D6A7",
-    },
-    {
-      title: "Home Medical Services",
-      description: "Basic medical treatments, health check-ups, and monitoring.",
-      icon: <FaHospital size={48} />,
-      background: "#E3F2FD",
-      borderColor: "#90CAF9",
-    },
-    {
-      title: "Special Needs Care",
-      description: "Personalized care for individuals with disabilities or chronic conditions.",
-      icon: <FaWheelchair size={48} />,
-      background: "#E8F5E9",
-      borderColor: "#A5D6A7",
-    },
-    {
-      title: "Intensive Care at Home",
-      description: "Advanced, critical care services provided by skilled nurses.",
-      icon: <FaHeartbeat size={48} />,
-      background: "#E3F2FD",
-      borderColor: "#90CAF9",
+        "Become a caregiver and make a meaningful impact by providing compassionate care to those who need it the most.",
     },
   ];
 
   return (
-    <>
-      {/* Header Section */}
-      <section
-        className="relative bg-cover bg-center h-[400px] flex items-center justify-center mt-24 rounded-lg shadow-lg"
-        style={{ backgroundImage: "url('/i1.jpeg')" }}
+    <div className="p-6 pt-20 min-h-screen bg-white flex flex-col items-center">
+      {/* Header - No Background, Clean iOS Look */}
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="text-3xl font-bold text-gray-900 tracking-tight mt-4"
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-50"></div>
-        <div className="relative z-10 text-center text-white px-6 sm:px-10 max-w-3xl">
-          <h2 className="text-4xl font-extrabold mb-4">Our Services</h2>
-          <p className="text-lg font-light mb-6">
-            Compassionate caregiving services tailored to enhance comfort, independence, and quality of life for your loved ones.
-          </p>
-        </div>
-      </section>
+        Our Services
+      </motion.h2>
 
-      <div className="pt-2">
-        {/* Services Section Grid */}
-        <div className="py-16 px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {Object.entries(content).map(([key, { title, icon, brief }]) => (
-              <div
-                key={key}
-                className="flex flex-col items-center bg-white shadow-lg rounded-xl overflow-hidden transition duration-300 hover:scale-105 transform p-6 border border-gray-200"
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 w-full max-w-2xl">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="bg-gray-50 p-6 rounded-2xl shadow-md text-center flex flex-col items-center border border-gray-200"
+          >
+            <div className="mb-4">{service.icon}</div>
+            <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
+            <p className="text-gray-600 mb-4">{service.description}</p>
+            <div className="flex gap-4 justify-center">
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleLearnMore(service.details)}
+                className="bg-blue-500 text-white px-5 py-2 rounded-xl shadow-md hover:bg-blue-600 transition-all"
               >
-                <div className="w-full text-center mb-6">{icon}</div>
-                <div className="w-full text-center">
-                  <h2 className="text-2xl font-semibold text-primary-dark mb-4">{title}</h2>
-                  <p className="text-gray-600 mb-4 text-lg">{brief}</p>
-                  <div className="flex gap-6 justify-center">
-                    <button
-                      onClick={() => handleLearnMore(key)}
-                      className="bg-primary-blue text-white px-6 py-2 rounded-lg hover:bg-primary-green transition-all duration-300 ease-in-out"
-                    >
-                      Learn More
-                    </button>
-                    <button
-                      onClick={() => handleFutureDevelopment(key)}
-                      className="bg-primary-green text-white px-6 py-2 rounded-lg hover:bg-primary-blue transition-all duration-300 ease-in-out"
-                    >
-                      Click to Continue
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Popup for Learn More */}
-      {showPopup && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-8 w-3/4 md:w-1/2 rounded-xl shadow-2xl relative">
-            <button
-              onClick={handleClosePopup}
-              className="absolute top-4 right-4 text-xl font-bold text-gray-600"
-            >
-              &times;
-            </button>
-            <h2 className="text-2xl font-semibold text-primary-blue mb-4">Details</h2>
-            <div className="text-gray-700">{formatText(popupContent)}</div>
-          </div>
-        </div>
-      )}
-
-      {/* Additional Services Section */}
-      <div className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-dark">CareEase Services</h1>
-        <p className="text-lg md:text-2xl text-dark mb-6">
-          Connecting you with trusted caregivers for personalized care.
-        </p>
-      </div>
-
-      <div className="py-16 px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          {additionalServices.map((service, index) => (
-            <div
-              key={index}
-              style={{ backgroundColor: service.background, borderColor: service.borderColor }}
-              className="rounded-xl h-[350px] w-[300px] flex flex-col justify-center items-center mx-auto px-4 py-6 border-[3px] hover:shadow-xl transition-transform duration-300 transform hover:scale-105"
-            >
-              {/* FontAwesome Icon (React Icons) */}
-              <div className="text-center mb-4">{service.icon}</div>
-              <h3 className="text-2xl font-bold mb-2 text-gray-800">{service.title}</h3>
-              <p className="text-base text-center text-gray-700">{service.description}</p>
+                Learn More
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleNavigation(service.path)}
+                className="bg-green-500 text-white px-5 py-2 rounded-xl shadow-md hover:bg-green-600 transition-all"
+              >
+                Continue
+              </motion.button>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        ))}
       </div>
-    </>
+
+      {/* Popup Modal */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 p-4"
+          >
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 30, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md relative border border-gray-200"
+            >
+              <button
+                onClick={handleClosePopup}
+                className="absolute top-2 right-2 text-2xl font-bold text-gray-500 hover:text-gray-800 transition-transform transform hover:scale-110"
+              >
+                &times;
+              </button>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Details</h3>
+              <p className="text-gray-700">{popupContent}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
-}
+};
+
+export default Services;

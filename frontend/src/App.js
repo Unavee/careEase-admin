@@ -15,7 +15,8 @@ import HowItWorks from "./components/HowItWorks";
 import Physiotherapy from "./pages/Physiotherapy";
 import Contact from "./components/Contact";
 import AttendantCareForm from "./pages/AttendantCareForm";
-
+import Dashboard from "./components/new/Dashboard";
+import CaretakerLogin from "./components/CaretakerLogin";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -46,6 +47,10 @@ const App = () => {
         <Route
           path="/signup"
           element={isLoggedIn ? <Navigate to="/services" /> : <Signup />}
+        />
+        <Route
+          path="/caretakerlogin"
+          element={isLoggedIn ? <Navigate to="/caredashboard" /> : <CaretakerLogin />}
         />
         <Route
           path="/how-it-works"
@@ -91,6 +96,14 @@ const App = () => {
             <ProtectedRoute>
               <UserDashboard /> {/* No need to pass user details here */}
             </ProtectedRoute>
+          }
+          
+        />
+        <Route
+          path="/caredashboard/*"
+          element={
+              <Dashboard/> 
+         
           }
           
         />

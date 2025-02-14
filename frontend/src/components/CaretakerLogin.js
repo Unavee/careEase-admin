@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from '../firebaseConfig';  // Import the signIn method
 import { auth } from '../firebaseConfig';  // Import Firebase auth
 
-const SignIn = ({ onLogin }) => {
+const CaretakerLogin = ({ onLogin }) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [errorPopup, setErrorPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -19,7 +19,7 @@ const SignIn = ({ onLogin }) => {
 
     try {
       // Use the signInWithEmailAndPassword method from Firebase
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, phoneNumber);
 
       // Login successful, get user data
       const user = userCredential.user;
@@ -44,13 +44,9 @@ const SignIn = ({ onLogin }) => {
 
     // Add a delay of 3 seconds (3000ms) before navigating
     setTimeout(() => {
-      navigate("/services"); // Navigate to /services
+      navigate("/caretaker"); // Navigate to /caretaker
     }, 3000); // Adjusted delay to 3 seconds
   };
-  const handleCaretakerLogin = () => {
-    navigate("/caretakerlogin"); // Navigate to caretaker login
-  };
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center font-sans bg-gray-50 relative mt-14">
@@ -72,10 +68,10 @@ const SignIn = ({ onLogin }) => {
         {/* Login Form */}
         <div className="bg-white p-8 rounded-lg shadow-lg">
           <h1 className="text-2xl lg:text-3xl font-bold text-center text-primary-blue mb-6">
-            Welcome Back
+            Caretaker Login
           </h1>
           <p className="text-gray-500 text-center mb-6">
-            Please log in to continue.
+            Please log in as a caretaker to continue.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,19 +95,18 @@ const SignIn = ({ onLogin }) => {
 
             <div>
               <label
-                htmlFor="password"
+                htmlFor="phoneNumber"
                 className="block text-sm font-medium text-gray-700"
               >
-                Password
+                Phone Number
               </label>
               <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                type="text"
+                id="phoneNumber"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Enter your phone number"
                 className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none transition-all duration-300"
-                autocomplete="current-password"
                 required
               />
             </div>
@@ -134,13 +129,6 @@ const SignIn = ({ onLogin }) => {
               Sign Up
             </span>
           </p>
-          <p
-  onClick={handleCaretakerLogin}
-  className="text-primary-blue text-sm text-center mt-4 cursor-pointer hover:underline"
->
-  Continue as a Caretaker
-</p>
-
 
           <p
             onClick={() => navigate("/forgot-password")}
@@ -159,7 +147,7 @@ const SignIn = ({ onLogin }) => {
               Login Successful!
             </h2>
             <p className="text-center text-gray-600 mt-4">
-              Welcome back! You have successfully logged in.
+              Welcome back! You have successfully logged in as a caretaker.
             </p>
             <div className="flex justify-center mt-4">
               <button
@@ -181,7 +169,7 @@ const SignIn = ({ onLogin }) => {
               Login Failed
             </h2>
             <p className="text-center text-gray-600 mt-4">
-              Invalid email or password. Please try again.
+              Invalid email or phone number. Please try again.
             </p>
             <div className="flex justify-center mt-4">
               <button
@@ -198,4 +186,4 @@ const SignIn = ({ onLogin }) => {
   );
 };
 
-export default SignIn;
+export default CaretakerLogin;
