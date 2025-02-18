@@ -17,22 +17,17 @@ const UserSidebar = () => {
     ];
 
     return (
+        <>
+        {/* Large Screen Sidebar */}
         <div
-            className={`transition-all duration-300 ease-in-out bg-white text-black ${
-                isExpanded ? "w-64" : "w-20"
-            } h-full shadow-md`}
+            className={`hidden lg:flex flex-col transition-all duration-300 ease-in-out bg-white text-black h-full shadow-md ${
+                isExpanded ? "w-64" : "w-18"
+            }`}
         >
             <div className="flex justify-between items-center p-4">
                 <h1 className={`text-lg font-bold ${!isExpanded && "hidden"}`}>CareEase</h1>
-                <button
-                    onClick={toggleSidebar}
-                    className="text-black focus:outline-none"
-                >
-                    {isExpanded ? (
-                        <FaChevronLeft className="text-2xl" />
-                    ) : (
-                        <FaBars className="text-2xl" />
-                    )}
+                <button onClick={toggleSidebar} className="text-black focus:outline-none">
+                    {isExpanded ? <FaChevronLeft className="text-2xl" /> : <FaBars className="text-2xl" />}
                 </button>
             </div>
             <ul className="mt-8 space-y-4">
@@ -53,6 +48,27 @@ const UserSidebar = () => {
                 ))}
             </ul>
         </div>
+
+        {/* Small Screen Sidebar - Positioned at Bottom */}
+        <div className="lg:hidden fixed top-20 left-0 w-full bg-white shadow-md">
+            <div className="flex justify-around p-5">
+                {menuItems.map((item, index) => (
+                    <NavLink
+                        key={index}
+                        to={item.link}
+                        className={({ isActive }) =>
+                            `flex flex-col items-center text-sm ${
+                                isActive ? "text-blue-400 font-semibold" : "text-gray-500"
+                            }`
+                        }
+                    >
+                        <span className="text-2xl">{item.icon}</span>
+                        {/* <span>{item.label}</span> */}
+                    </NavLink>
+                ))}
+            </div>
+        </div>
+    </>
     );
 };
 

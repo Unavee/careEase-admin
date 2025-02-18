@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 
+
 const categories = [
   "Elderly Care", "Mother Care", "Child Care", "Post-Accident Care",
   "Physiotherapy", "Home Medical Services", "Special Needs Care", "Intensive Care at Home"
@@ -136,16 +137,16 @@ const UserHome = ({ patientDetails, category }) => {
   };
 
   return (
-    <div className="bg-gray-50 p-6 rounded-lg shadow-lg w-full">
-            <h1 className="text-3xl font-bold text-gray-800 mb-6">Welcome, <span className=" text-primary-blue">{firstName || "Guest"} {lastName || ""}! </span></h1>
+    <div className="bg-white lg:p-6 rounded-lg sm:shadow-lg w-full mt-32 lg:mt-0">
+            <h1 className="text-3xl font-bold text-gray-800 p-5 sm:mt-24 lg:mt-0">Welcome, <span className=" text-primary-blue">{firstName || "Guest"} {lastName || ""}! </span></h1>
       {/* Dashboard Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="sm:w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:mb-12">
         {[{ icon: FaUsers, title: "Total Services", value: "5 completed", color: "blue" },
           { icon: FaRegListAlt, title: "Active Orders", value: "2 in progress", color: "green" },
           { icon: FaClock, title: "Avg Response Time", value: "15 minutes", color: "yellow" },
           { icon: FaMapMarkerAlt, title: "Caregiver Near You", value: "3 available", color: "red" }
         ].map(({ icon: Icon, title, value, color }, index) => (
-          <div key={index} className="bg-white p-4 shadow-md rounded-lg flex items-center">
+          <div key={index} className="p-4 shadow-md rounded-lg flex items-center">
             <Icon className={`text-4xl text-${color}-500 mr-4`} />
             <div>
               <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
@@ -157,55 +158,68 @@ const UserHome = ({ patientDetails, category }) => {
 
 
 
-   {/* Patient List Table */}
-<div className="bg-white p-6 rounded-lg shadow-lg mt-6">
-  <div className="flex justify-between items-center mb-4">
-    <h2 className="text-xl font-bold text-gray-800">Patient Details</h2>
-    <button className="bg-primary-blue text-white px-6 py-2 rounded-lg flex items-center space-x-2 hover:bg-blue-600 transition" onClick={() => setShowPopup(true)}>
-      <FaUsers /> <span>Add New Patient</span>
-    </button>
-  </div>
-  <div className="overflow-x-auto"> {/* Added this wrapper for horizontal scrolling */}
-    <table className="w-full border-collapse gap-4 border border-gray-300">
-      <thead>
-        <tr className="bg-gray-200">
-          <th className="border p-2 w-1/12">SNO</th> {/* Fixed width for first column */}
-          <th className="border p-2 w-1/4">Name</th> {/* Fixed width for second column */}
-          <th className="border p-2 w-1/4">Category</th> {/* Fixed width for third column */}
-          <th className="border p-2 w-full">Actions</th> {/* Remaining space for the 4th column */}
-        </tr>
-      </thead>
-      <tbody>
-        {patients.map((patient, index) => (
-          <tr key={index} className="border">
-            <td className="border p-2">{index + 1}</td>
-            <td className="border p-2">{patient.name}</td>
-            <td className="border p-2">{patient.category}</td>
-            <td className="border p-2 space-x-3">
-              <div className="flex flex-wrap gap-2">
-                <button className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 transition" onClick={() => handleEdit(index)}>
-                  <FaEdit className="mr-2" /> Edit
-                </button>
-                <button className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition" onClick={() => handleDelete(patient.id)}>
-                  <FaTrash className="mr-2" /> Delete
-                </button>
-                <button className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 transition">
-                  <FaEye className="mr-2" /> View
-                </button>
-                <button className="bg-purple-500 text-white px-2 py-1 rounded hover:bg-purple-600 transition" onClick={handleFindCaregiver}>
-                  <FaSearch className="mr-2" /> Find Caregiver
-                </button>
-              </div>
-            </td>
+  {/* Patient List Table */}
+  <div className="bg-blue-800 p-6 rounded-lg shadow-lg mt-6">
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-xl font-bold text-gray-100">Patient Details</h2>
+      <button className="bg-primary-blue text-white px-6 py-2 rounded-lg flex items-center space-x-2 hover:bg-blue-600 transition" onClick={() => setShowPopup(true)}>
+        <FaUsers />  <span className="hidden md:block">Add New Patient</span>
+      </button>
+    </div>
+    <div className="overflow-x-auto"> {/* Added this wrapper for horizontal scrolling */}
+      <table className="w-full border-collapse rounded-lg gap-4 border border-white-300">
+        <thead>
+          <tr className="bg-white">
+            <th className="border p-2 w-1/12">SNO</th> {/* Fixed width for first column */}
+            <th className="border p-2 w-1/4">Name</th> {/* Fixed width for second column */}
+            <th className="border p-2 w-1/4">Category</th> {/* Fixed width for third column */}
+            <th className="border p-2 w-full">Actions</th> {/* Remaining space for the 4th column */}
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          {patients.map((patient, index) => (
+            <tr key={index} className="border">
+              <td className="border p-2 text-white">{index + 1}</td>
+              <td className="border p-2 text-white">{patient.name}</td>
+              <td className="border p-2 text-white">{patient.category}</td>
+              <td className="border p-2 space-x-3">
+              <div className="flex flex-row flex-wrap justify-center sm:justify-evenly gap-4">
+  <button 
+    className="bg-yellow-500 text-white px-5 py-2 flex items-center gap-2 rounded-md hover:bg-yellow-600 transition"
+    onClick={() => handleEdit(index)}
+  >
+    <FaEdit/> <span className="hidden md:block"> Edit</span>
+   
+  </button>
+
+  <button 
+    className="bg-red-500 text-white px-5 py-2 flex items-center gap-2 rounded-md hover:bg-red-600 transition"
+    onClick={() => handleDelete(patient.id)}
+  >
+    <FaTrash /> <span className="hidden md:block">Delete</span>
+  </button>
+
+  <button 
+    className="bg-green-500 text-white px-5 py-2 flex items-center gap-2 rounded-md hover:bg-green-600 transition"
+  >
+    <FaEye  /> <span className="hidden md:block">View</span>
+  </button>
+
+  <button 
+    className="bg-purple-500 text-white px-5 py-2 flex items-center gap-2 rounded-md hover:bg-purple-600 transition"
+    onClick={handleFindCaregiver}
+  >
+    <FaSearch  /> <span className="hidden md:block">Find Caregiver</span>
+  </button>
 </div>
 
-
-      {/* Popup Form for Adding/Editing Patient */}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center md:mt-24">
           <motion.div

@@ -3,9 +3,10 @@
 import { motion } from "framer-motion";
 import { CallIcon, Heart, BestClass, Rapids } from "../icons";
 
+
 export default function Hero() {
   return (
-    <div className="relative h-[500px] md:h-[600px] lg:h-[700px] flex flex-col justify-center items-center text-center text-white overflow-hidden px-4">
+    <div className="relative bg-gradient-to-br from-blue-100/60 to-teal-200/40 h-[500px] md:h-[600px] lg:h-[700px] flex flex-col justify-center items-center text-center text-white overflow-hidden px-4">
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
@@ -54,6 +55,8 @@ export default function Hero() {
           </motion.div>
         ))}
       </motion.div>
+      
     </div>
+     
   );
 }

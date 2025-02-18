@@ -14,10 +14,20 @@ module.exports = {
           '0%, 50%': { borderColor: 'transparent' },
           '100%': { borderColor: 'black' },
         },
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
       animation: {
         typewriter: 'typewriter 3s steps(30) 1s 1 normal both',
         blink: 'blink 0.5s step-end infinite alternate',
+        "fade-in": "fadeIn 3s ease-in-out",
+      },
+      backdropBlur: {
+        sm: "4px",
+        md: "10px",
+        lg: "20px",
       },
       colors: {
         primary: {

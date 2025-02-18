@@ -160,7 +160,7 @@ const FindCare = ({ selectedCategoryFromHome }) => {
     setSortedCaretakers(sorted);
   };  
   return (
-    <div className=" w-full flex flex-col md:flex-row bg-gray-100 text-black ">
+    <div className="w-full flex flex-col md:flex-row bg-gray-100 text-black">
       {/* Left Sidebar */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
@@ -255,43 +255,43 @@ const FindCare = ({ selectedCategoryFromHome }) => {
       <div className="w-full md:w-3/4 px-6">
         {/* Top Bar: Search & Sort */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
-  {/* Search input */}
-  <div className="flex items-center border p-2 rounded-md w-full bg-white shadow-md">
-    <Search className="text-gray-500" />
-    <input
-      type="text"
-      placeholder="Search caretakers..."
-      className="ml-2 w-full outline-none"
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
-  </div>
+          {/* Search input */}
+          <div className="flex items-center border p-2 rounded-md w-full bg-white shadow-md">
+            <Search className="text-gray-500" />
+            <input
+              type="text"
+              placeholder="Search caretakers..."
+              className="ml-2 w-full outline-none"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
 
-  {/* Sort and Reset buttons */}
-  <div className="flex flex-col sm:flex-row gap-4 mt-4 sm:mt-0 w-full sm:w-auto">
-    <button
-      className="flex items-center gap-2 bg-primary-blue text-white px-4 py-3 rounded-md hover:bg-primary-green w-full sm:w-32"
-      onClick={() => handleSort("A-Z")}
-    >
-      <ArrowDownCircle />
-      A-Z
-    </button>
-    <button
-      className="flex items-center gap-2 bg-primary-green text-white px-4 py-3 rounded-md hover:bg-primary-blue w-full sm:w-32"
-      onClick={() => handleSort("Z-A")}
-    >
-      <ArrowDownCircle />
-      Z-A
-    </button>
+          {/* Sort and Reset buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-4 sm:mt-0 w-full sm:w-auto">
+            <button
+              className="flex items-center gap-2 bg-primary-blue text-white px-4 py-3 rounded-md hover:bg-primary-green w-full sm:w-32"
+              onClick={() => handleSort("A-Z")}
+            >
+              <ArrowDownCircle />
+              A-Z
+            </button>
+            <button
+              className="flex items-center gap-2 bg-primary-green text-white px-4 py-3 rounded-md hover:bg-primary-blue w-full sm:w-32"
+              onClick={() => handleSort("Z-A")}
+            >
+              <ArrowDownCircle />
+              Z-A
+            </button>
 
-    {/* Reset Filters */}
-    <div className="text-right sm:text-left md:mt-3 sm:mt-0">
-      <RefreshCcw
-        className="cursor-pointer text-primary-blue hover:text-primary-green"
-        onClick={resetFilters}
-      />
-    </div>
-  </div>
-</div>
+            {/* Reset Filters */}
+            <div className="text-right sm:text-left md:mt-3 sm:mt-0">
+              <RefreshCcw
+                className="cursor-pointer text-primary-blue hover:text-primary-green"
+                onClick={resetFilters}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Caretakers List */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -306,10 +306,11 @@ const FindCare = ({ selectedCategoryFromHome }) => {
                   <span>{caretaker.rating}</span>
                   <span>⭐</span>
                 </div>
-              </div>{/* Continue Button */}
-      <button className="w-full py-2 bg-primary-blue text-white rounded-md hover:bg-primary-green transition-colors duration-200">
-        Continue
-      </button>
+              </div>
+              {/* Continue Button */}
+              <button className="w-full py-2 bg-primary-blue text-white rounded-md hover:bg-primary-green transition-colors duration-200">
+                Continue
+              </button>
             </div>
           ))}
         </div>

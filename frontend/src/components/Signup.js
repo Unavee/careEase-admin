@@ -46,7 +46,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center font-sans bg-gray-50 relative mt-14">
+    <div className="min-h-screen flex items-center justify-center font-sans bg-gray-50 relative">
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"

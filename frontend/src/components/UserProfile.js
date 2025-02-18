@@ -101,7 +101,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-10 px-4">
+    <div className="min-h-screen bg-gray-50 flex mt-14 justify-center py-10">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,17 +109,17 @@ const UserProfile = () => {
         className="bg-white shadow-lg rounded-lg w-full max-w-4xl p-6 space-y-6"
       >
         {/* Header Section */}
-        <div className="flex items-center space-x-6 border-b pb-6">
-          <div className="relative">
+        <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 border-b pb-6">
+          <div className="">
             <img
               src={
                 userData.profileImage || "https://via.placeholder.com/150"
               }
               alt="Profile"
-              className="w-28 h-28 rounded-full object-cover border-4 border-blue-500"
+              className="w-28 h-28 rounded-full object-cover border-4 border-blue-800"
             />
             {editMode && (
-              <label className="absolute bottom-0 right-0 bg-blue-500 p-2 rounded-full cursor-pointer">
+              <label className="absolute bottom-0 right-0 bg-blue-500 p-2 rounded-full cursor-pointer" style={{ zIndex: 10 }}>
                 <FaEdit className="text-white" />
                 <input
                   type="file"
@@ -129,7 +129,7 @@ const UserProfile = () => {
               </label>
             )}
           </div>
-          <div>
+          <div className="text-center sm:text-left">
             <h1 className="text-2xl font-bold text-gray-800">
               {userData.firstName || "First Name"} {userData.lastName || "Last Name"}
             </h1>

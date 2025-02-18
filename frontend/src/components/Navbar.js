@@ -2,7 +2,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FiHome } from "react-icons/fi";
 import { MdPerson } from "react-icons/md";
 import { useState, useEffect, useCallback } from "react";
-import { BsHospital, BsPeopleFill } from "react-icons/bs";
+import { BsPeopleFill } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Bell } from "lucide-react";
@@ -11,7 +11,7 @@ import { IoClose } from "react-icons/io5";
 import { FaUserNurse, FaHeadphonesAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ isLoggedIn, handleLogout}) => {
+const Navbar = ({ isLoggedIn, handleLogout }) => {
   const [isClient, setIsClient] = useState(false);
   const [activeTab, setActiveTab] = useState("/");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -30,21 +30,22 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
     setIsSidebarOpen((prev) => !prev);
   }, []);
 
-  
+  const text = "CarEEase".split(""); // brand Name
 
   if (!isClient) return null;
 
   return (
-    <div className="w-full container mx-auto">
-      {/* 🔹 Mobile Navbar */}
+    <div className="w-full container mx-auto ">
+      {/*  Mobile Navbar */}
       <motion.div
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="lg:hidden top-0 left-0 w-screen -translate-x-1/2 bg-white shadow-xl p-1 flex justify-between items-center rounded-xl border border-gray-200 backdrop-blur-xl z-50 fixed"
-    >
-      {/* 🔹 Logo */}
-      <Link to="/" className="flex flex-row items-center space-x-2">
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="lg:hidden top-0 left-0 w-full bg-white lg:shadow-xl p-1 flex justify-between items-center rounded-xl border border-gray-200 backdrop-blur-xl z-50 fixed mobile-navbar"
+      >
+        {/*  Logo */}
+        
+      <Link to="/" className="items-center space-x-2">
         <img
           src="/care.png"
           alt="CareEase"
@@ -53,13 +54,13 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
       </Link>
 
       <div className="flex items-center space-x-4">
-        {/* 🔔 Notification Icon */}
+        {/*  Notification Icon */}
         <button className="relative p-2 rounded-full hover:bg-gray-100"  onClick={toggleNotificationPanel}>
           <Bell className="w-6 h-6 text-gray-700" />
           <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
         </button>
 
-        {/* 👤 Profile Icon (Only when logged in) */}
+        {/*  Profile Icon (Only when logged in) */}
         {isLoggedIn && (
           <Link to="/userdashboard">
             <FaUserCircle className="w-8 h-8 text-gray-700 hover:text-blue-500 transition" />
@@ -68,7 +69,7 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
       </div>
     </motion.div>
 
-      {/* 🔹 Desktop Navbar */}
+      {/*  Desktop Navbar */}
       <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -76,36 +77,61 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
         className="hidden lg:flex bg-white shadow-lg p-4 items-center justify-between rounded-lg"
       >
         <Link to="/" className="text-gray-800 text-2xl font-bold flex items-center space-x-2">
-          <img src="/care.png" alt="CareEase" className="object-contain h-20 w-fit" />
-          <span>CareEase</span>
-        </Link>
+      {/* Logo Image */}
+      <img 
+        src="/care.png" 
+        alt="CareEase" 
+        className="object-contain h-16 md:h-20 w-auto"
+      />
 
-        <nav className="flex space-x-16 text-gray-700 font-medium">
-          <Link to="/" className="hover:text-purple-600">Home</Link>
-          <Link to="/services" className="hover:text-purple-600">Services</Link>
-          <Link to="/blog" className="hover:text-purple-600">Blog</Link>
-          <Link to="/contact" className="hover:text-purple-600">Contact</Link>
+      {/* Animated Split Text */}
+      <motion.span className="flex space-x-1">
+        {text.map((letter, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+            className="text-primary-blue"
+          >
+            {letter}
+          </motion.span>
+        ))}
+      </motion.span>
+    </Link>
+
+        <nav className="flex space-x-16 text-blue-800 text-lg font-semibold">
+          <Link to="/" className="hover:text-blue-400">Home</Link>
+          <Link to="/services" className="hover:text-blue-400">Services</Link>
+          <Link to="/blog" className="hover:text-blue-400">Blog</Link>
+          <Link to="/contact" className="hover:text-blue-400">Contact</Link>
         </nav>
 
-        {/* 📞 Action Buttons */}
+        {/*  Action Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="flex bg-purple-600 text-white px-6 py-2 rounded-lg border border-transparent hover:border-purple-600 hover:bg-white hover:text-purple-600 transition">
-            <FaPhoneAlt />
-            <span className="ml-2">Appointment</span>
-          </button>
-          <button className="flex bg-red-500 text-white px-6 py-2 rounded-lg border border-transparent hover:border-red-500 hover:bg-white hover:text-red-500 transition">
+        <motion.button
+        whileHover={{ scale: 1.1,  }}
+        whileTap={{ scale: 0.95 }}
+        className="flex bg-primary-blue text-white px-6 py-2 rounded-lg border border-transparent hover:border-primary-green hover:bg-white hover:text-primary-green transition items-center"
+      >
+        <FaPhoneAlt />
+        <span className="ml-2">Appointment</span>
+      </motion.button>
+          <button className="flex bg-primary-green text-white px-6 py-2 rounded-lg border border-transparent hover:border-primary-blue hover:bg-white hover:text-primary-blue transition items-center">
             <FaHeadphonesAlt />
             <span className="ml-2">Help</span>
           </button>
+         
         </div>
+
         <div className="flex items-center space-x-4">
-        {/* 🔔 Notification Icon */}
+        {/*  Notification Icon */}
         <button className="relative p-2 rounded-full hover:bg-gray-100"  onClick={toggleNotificationPanel}>
           <Bell className="w-6 h-6 text-gray-700" />
           <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
         </button>
 
-        {/* 👤 Profile Icon (Only when logged in) */}
+        {/*  Profile Icon (Only when logged in) */}
         {isLoggedIn && (
           <Link to="/userdashboard">
             <FaUserCircle className="w-8 h-8 text-gray-700 hover:text-blue-500 transition" />
@@ -114,7 +140,7 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
       </div>
       </motion.header>
 
-      {/* 🔹 Mobile Floating Navigation */}
+      {/*  Mobile Floating Navigation */}
       <motion.nav
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -128,7 +154,7 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
         <NavItem  onClick={toggleSidebar} icon={<MdPerson />} label="Profile" activeTab={activeTab} setActiveTab={setActiveTab} />
       </motion.nav>
 
-      {/* 🔹 Sidebar */}
+      {/* Sidebar */}
       <AnimatePresence>
         {isSidebarOpen && (
           <motion.div
@@ -178,7 +204,7 @@ const Navbar = ({ isLoggedIn, handleLogout}) => {
         )}
       </AnimatePresence>
 
-      {/* 🔽 Notification Panel */}
+      {/*  Notification Panel */}
       <AnimatePresence>
         {isOpen && (
           <>

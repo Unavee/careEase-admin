@@ -53,7 +53,7 @@ const SignIn = ({ onLogin }) => {
   
 
   return (
-    <div className="min-h-screen flex items-center justify-center font-sans bg-gray-50 relative mt-14">
+    <div className="min-h-screen flex items-center justify-center font-sans bg-gray-50 relative">
       {/* Background video */}
       <video
         className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
@@ -111,7 +111,7 @@ const SignIn = ({ onLogin }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 className="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-blue focus:outline-none transition-all duration-300"
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
               />
             </div>

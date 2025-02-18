@@ -39,12 +39,50 @@ const UserDashboard = () => {
     }
   }, [userId]);  // Add `userId` to the dependency array
 
+  useEffect(() => {
+    // Hide the bottom navigation bar
+    const bottomNavBar = document.getElementById('bottom-nav-bar');
+    if (bottomNavBar) {
+      bottomNavBar.style.display = 'none';
+    }
+
+    // Place the mobile sidebar at the bottom
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    if (mobileSidebar) {
+      mobileSidebar.style.position = 'fixed';
+      mobileSidebar.style.bottom = '0';
+      mobileSidebar.style.width = '100%';
+    }
+
+    // Hide the mobile navigation bar
+    const mobileNavBar = document.querySelector('.mobile-nav-bar');
+    if (mobileNavBar) {
+      mobileNavBar.style.display = 'none';
+    }
+
+    return () => {
+      // Restore the bottom navigation bar and mobile sidebar styles on component unmount
+      // if (bottomNavBar) {
+      //   bottomNavBar.style.display = '';
+      // }
+      // if (mobileSidebar) {
+      //   mobileSidebar.style.position = '';
+      //   mobileSidebar.style.bottom = '';
+      //   mobileSidebar.style.width = '';
+      // }
+      // // Restore the mobile navigation bar
+      // if (mobileNavBar) {
+      //   mobileNavBar.style.display = '';
+      // }
+    };
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="flex h-screen mt-24">
+    <div className="flex h-screen">
       {/* Sidebar */}
       <UserSidebar />
 

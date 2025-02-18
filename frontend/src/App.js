@@ -17,100 +17,99 @@ import Contact from "./components/Contact";
 import AttendantCareForm from "./pages/AttendantCareForm";
 import Dashboard from "./components/new/Dashboard";
 import CaretakerLogin from "./components/CaretakerLogin";
+
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = (user) => {
+const handleLogin = (user) => {
     setIsLoggedIn(true);
     localStorage.setItem("userId", user.uid); // Store userId in localStorage
   };
-  
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("userId"); // Remove userId from localStorage
   };
-
-  const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children }) => {
     return isLoggedIn ? children : <Navigate to="/signin" />;
   };
 
   return (
-    <Router>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/signin"
-          element={isLoggedIn ? <Navigate to="/services" /> : <SignIn onLogin={handleLogin} />}
-        />
-        <Route
-          path="/signup"
-          element={isLoggedIn ? <Navigate to="/services" /> : <Signup />}
-        />
-        <Route
-          path="/caretakerlogin"
-          element={isLoggedIn ? <Navigate to="/caredashboard" /> : <CaretakerLogin />}
-        />
-        <Route
-          path="/how-it-works"
-          element={<HowItWorks />}
-        />
-         <Route
-          path="/contact"
-          element={<Contact />}
-        />
-        <Route
-        path="/attendantCareForm/register"
-        element={<AttendantCareForm/>}
-        />
-        <Route path="/services" element={<Services />} />
-        {/* <Route
-          path="/services"
-          element={<ProtectedRoute><Services /></ProtectedRoute>}
-        /> */}
-        <Route
-          path="/bookingPage"
-          element={<ProtectedRoute><BookingPage /></ProtectedRoute>}
-        />
-        <Route
-          path="/fill-info"
-          element={<ProtectedRoute><InformationPage /></ProtectedRoute>}
-        />
-        <Route
-          path="/providecare"
-          element={<ProtectedRoute><ProvideCare /></ProtectedRoute>}
-        />
-        <Route
-          path="/nurse/register"
-          element={<ProtectedRoute><NurseForm /></ProtectedRoute>}
-        />
-        <Route
-        path="/physiotherapy/register"
-        element={<ProtectedRoute><Physiotherapy /></ProtectedRoute>}
-        />
-        {/* UserDashboard Route */}
-        <Route
-          path="/userdashboard/*"
-          element={
-            <ProtectedRoute>
-              <UserDashboard /> {/* No need to pass user details here */}
-            </ProtectedRoute>
-          }
+    <div className="App">
+      <Router>
+        <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/signin"
+            element={isLoggedIn ? <Navigate to="/services" /> : <SignIn onLogin={handleLogin} />}
+          />
+          <Route
+            path="/signup"
+            element={isLoggedIn ? <Navigate to="/services" /> : <Signup />}
+          />
+          <Route
+            path="/caretakerlogin"
+            element={isLoggedIn ? <Navigate to="/caredashboard" /> : <CaretakerLogin />}
+          />
+          <Route
+            path="/how-it-works"
+            element={<HowItWorks />}
+          />
+          <Route
+            path="/contact"
+            element={<Contact />}
+          />
+          <Route
+            path="/attendantCareForm/register"
+            element={<AttendantCareForm/>}
+          />
+          <Route path="/services" element={<Services />} />
+          {/* <Route
+            path="/services"
+            element={<ProtectedRoute><Services /></ProtectedRoute>}
+          /> */}
+          <Route
+            path="/bookingPage"
+            element={<ProtectedRoute><BookingPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/fill-info"
+            element={<ProtectedRoute><InformationPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/providecare"
+            element={<ProtectedRoute><ProvideCare /></ProtectedRoute>}
+          />
+          <Route
+            path="/nurse/register"
+            element={<ProtectedRoute><NurseForm /></ProtectedRoute>}
+          />
+          <Route
+            path="/physiotherapy/register"
+            element={<ProtectedRoute><Physiotherapy /></ProtectedRoute>}
+          />
+          {/* UserDashboard Route */}
+          <Route
+            path="/userdashboard/*"
+            element={
+              <ProtectedRoute>
+                <UserDashboard /> {/* No need to pass user details here */}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/caredashboard/*"
+            element={
+                <Dashboard/> 
           
-        />
-        <Route
-          path="/caredashboard/*"
-          element={
-              <Dashboard/> 
-         
-          }
-          
-        />
-       
-      </Routes>
-      <Footer />
-    </Router>
+            }
+          />
+        </Routes>
+
+      
+        <Footer />
+      </Router>
+    </div>
   );
 };
 
