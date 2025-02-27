@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Angu+Display&display=swap');
 
 /* Glowing Text Effect for CareEase */
 .glow-effect {
@@ -33,3 +34,27 @@
     }
   }
   
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #cdc9ca;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #aeaeb1;
+    border-radius: 0rem;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background: #ccfbf1;
+  }
+
+
+
+
+
+
+
+

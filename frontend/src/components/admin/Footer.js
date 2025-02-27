@@ -1,12 +1,12 @@
 
 import { Link } from "react-router-dom";
-
+import { MapPin, Mail, Phone} from "lucide-react";
 
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin} from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-blue-100/60 to-teal-200/40 text-black px-4 py-12 shadow-lg overflow-hidden">
+    <footer className="bg-gradient-to-br from-blue-100/60 to-teal-200/40  px-4 py-12 shadow-lg overflow-hidden">
         
 
      
@@ -19,8 +19,8 @@ const Footer = () => {
             <div className="flex items-center justify-center md:justify-start space-x-2">
               
               <div className="flex items-center space-x-2">
-              <img src="/care.png" alt="CareEase" className="object-contain h-24 w-fit" />
-              <h2 className="text-primary-blue text-3xl font-bold">CarEEase</h2>
+              <img src="/care.png" alt="CareEase" className="object-contain h-28 w-fit" />
+              <h2 className="text-primary-blue text-3xl font-bold">CareEase HomeCare Services</h2>
               </div>
                 
             </div>
@@ -79,24 +79,24 @@ const Footer = () => {
             <h3 className="text-blue-800/90 text-xl font-semibold mb-6">Contact Info</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3 justify-center md:justify-start">
-                <span className="mt-1 text-blue-400">📍</span>
-                <span className="text-blue-800/90">123 Street, Delhi, India</span>
+              <MapPin className="text-blue-400 mt-1" size={20} />
+                <span className="text-blue-800/90">Delhi, India</span>
               </li>
               <li className="flex items-center space-x-3 justify-center md:justify-start">
-                <span className="text-blue-400">✉</span>
-                <span className="text-blue-800/90">info@example.com</span>
+              <Mail className="text-blue-400" size={20} />
+                <span className="text-blue-800/90">info@care1.com</span>
               </li>
               <li className="flex items-center space-x-3 justify-center md:justify-start">
-                <span className="text-blue-400">✉</span>
-                <span className="text-blue-800/90">info@example.com</span>
+              <Mail className="text-blue-400" size={20} />
+                <span className="text-blue-800/90">info@care2.com</span>
               </li>
               <li className="flex items-center space-x-3 justify-center md:justify-start">
-                <span className="text-blue-400">📞</span>
-                <span className="text-blue-800/90">+012 345 67890</span>
+              <Phone className="text-blue-400" size={20} />
+                <span className="text-blue-800/90">+91 84557 39016</span>
               </li>
               <li className="flex items-center space-x-3 justify-center md:justify-start">
-                <span className="text-blue-400">📠</span>
-                <span className="text-blue-800/90">+012 345 67890</span>
+              <Phone className="text-blue-400" size={20} />
+                <span className="text-blue-800/90">+91 95678 90565</span>
               </li>
             </ul>
           </div>

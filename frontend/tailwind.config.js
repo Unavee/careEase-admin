@@ -19,6 +19,11 @@ module.exports = {
           "100%": { opacity: 1 },
         },
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        nunito: ["Nunito", "sans-serif"],
+        angu: ["Angu Display", "sans-serif"]
+      },
       animation: {
         typewriter: 'typewriter 3s steps(30) 1s 1 normal both',
         blink: 'blink 0.5s step-end infinite alternate',
@@ -47,6 +52,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins:  [],
 }
 
