@@ -90,8 +90,9 @@ export default function WidgetStats() {
   const widgetData = [
     { title: "CareGiver", value: Math.floor(Math.random() * 10000) + 5000 },
     { title: "Patients", value: Math.floor(Math.random() * 20000) + 10000 },
-    { title: "Hospitals", value: Math.floor(Math.random() * 500) + 100 },
-    { title: "New Agency", value: Math.floor(Math.random() * 1000) + 200 }
+    { title: "New Users", value: Math.floor(Math.random() * 20000) + 10000 },
+    { title: "Vists", value: Math.floor(Math.random() * 20000) + 10000 },
+    
   ];
 
   return (

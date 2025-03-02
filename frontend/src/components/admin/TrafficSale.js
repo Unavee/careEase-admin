@@ -161,13 +161,12 @@ const TrafficSale = () => {
       
       {/* Statistics */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-around gap-4 mt-6">
         {[{ title: "New Patients", value: "9,123", percentage: 30 },
           { title: "New Caregivers", value: "5,213", percentage: 20 },
-          { title: "New Hospitals", value: "812", percentage: 10 },
-          { title: "New Agencies", value: "1,023", percentage: 15 },
+          
           { title: "Pageviews", value: "78,623", percentage: 60 }].map((item, i) => (
-          <div key={i} className="bg-gradient-to-br from-blue-100/60 to-teal-200/40 p-4 rounded-xl shadow-md flex flex-col font-semibold items-center">
+          <div key={i} className="bg-gradient-to-br from-blue-100/60 to-teal-200/40 p-4 rounded-xl shadow-md flex flex-col font-semibold items-center w-full">
             <p className="text-blue-800 text-sm">{item.title}</p>
             <p className="text-lg font-semibold">{item.value}</p>
             <p className={item.percentage > 50 ? "text-red-500" : "text-green-500"}>{item.percentage}% {item.percentage > 50 ? "↓" : "↑"}</p>

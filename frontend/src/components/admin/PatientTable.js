@@ -115,7 +115,7 @@ const PatientTable = () => {
         name: "Vikram Nair",
         status: "Inactive",
         registeredDate: "May 5, 2022",
-       location:"kochi",
+        location:"kochi",
         usage: 20,
         dateRange: "Apr 1, 2023 - Apr 30, 2023",
         paymentMethod: "net banking",
@@ -128,7 +128,7 @@ const PatientTable = () => {
         name: "Meera Sen",
         status: "Active",
         registeredDate: "Sep 30, 2023",
-       location:"hyderbad",
+        location:"hyderbad",
         usage: 60,
         dateRange: "Sep 1, 2023 - Sep 30, 2023",
         paymentMethod: "credit card",
@@ -217,14 +217,14 @@ const PatientTable = () => {
   // Payment method component
   const PaymentMethod = ({ method }) => {
     const methodConfig = {
-      mastercard: { icon: CreditCard, color: 'text-gray-700', label: 'Mastercard' },
-      visa: { icon: CreditCard, color: 'text-blue-600', label: 'Visa' },
-      stripe: { icon: CreditCard, color: 'text-purple-600', label: 'Stripe' },
-      paypal: { icon: CreditCard, color: 'text-blue-500', label: 'PayPal' },
-      apple: { icon: Apple, color: 'text-gray-900', label: 'Apple Pay' }
+      upi: { icon: CreditCard, color: 'text-gray-700', label: 'UPI' },
+      credit_card: { icon: CreditCard, color: 'text-blue-600', label: 'Credit card' },
+      debit_card: { icon: CreditCard, color: 'text-purple-600', label: 'Debit card' },
+      netbanking: { icon: CreditCard, color: 'text-blue-500', label: 'Netbanking' },
+      razorpay: { icon: Apple, color: 'text-gray-900', label: 'Razorpay' }
     };
 
-    const config = methodConfig[method] || methodConfig.mastercard;
+    const config = methodConfig[method] || methodConfig.upi;
     const Icon = config.icon;
 
     return (
@@ -303,11 +303,11 @@ const PatientTable = () => {
           onChange={(e) => handleFilterChange('paymentMethod', e.target.value)}
         >
           <option value="">All Payment Methods</option>
-          <option value="Mastercard">Mastercard</option>
-          <option value="visa">Visa</option>
-          <option value="stripe">Stripe</option>
-          <option value="paypal">PayPal</option>
-          <option value="apple">Apple Pay</option>
+          <option value="UPI">UPI</option>
+          <option value="Netbanking">Netbanking</option>
+          <option value="Credit card">Credit card</option>
+          <option value="Debit card">Debit card</option>
+          <option value="Razorpay">Razorpay</option>
         </select>
       </div>
 
