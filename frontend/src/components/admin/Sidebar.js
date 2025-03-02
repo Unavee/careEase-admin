@@ -13,7 +13,7 @@ import {
 const Sidebar = ({ setSelectedComponent }) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
-  console.log("Sidebar -> setSelectedComponent:", setSelectedComponent); // ✅ Debugging
+  console.log("Sidebar -> setSelectedComponent:", setSelectedComponent); 
 
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
