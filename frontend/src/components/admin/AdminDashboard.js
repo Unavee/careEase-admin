@@ -9,7 +9,7 @@ import CaregiversTable from "./CaregiverTable";
 import PendingCaregivers from "./PendingCaregivers";
 
 const AdminDashboard = () => {
-  // ✅ Define state
+ 
   const [selectedComponent, setSelectedComponent] = useState("Dashboard");
 
   const components = {
@@ -21,11 +21,11 @@ const AdminDashboard = () => {
     Reports: <TrafficSale />,
   };
 
-  console.log("Dashboard -> setSelectedComponent:", setSelectedComponent); // ✅ Debugging
+  console.log("Dashboard -> setSelectedComponent:", setSelectedComponent);
 
   return (
     <div className="flex h-screen custom-scrollbar">
-      {/* ✅ Pass setSelectedComponent properly */}
+      {/*  Pass setSelectedComponent properly */}
      
       <Sidebar setSelectedComponent={setSelectedComponent} />
       
